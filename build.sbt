@@ -26,6 +26,7 @@ libraryDependencies ++= Seq(
   "com.github.pathikrit" %% "better-files"              % "3.9.1",
   "com.typesafe.scala-logging" %% "scala-logging"       % "3.9.2",
   "com.amazonaws" % "aws-java-sdk-s3"                   % "1.11.294",
+  "com.sun.activation" % "javax.activation" % "1.2.0",
   "org.scalatest" %% "scalatest"                        % "3.0.8"        % Test,
   "ch.qos.logback" % "logback-classic"                  % "1.2.3"        % Test,
   "org.iq80.leveldb" % "leveldb"                        % "0.12",
