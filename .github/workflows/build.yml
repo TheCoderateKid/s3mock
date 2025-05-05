@@ -18,7 +18,12 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'  # Update if your project uses a different Java version
+          java-version: '11'
+
+      - name: Set up Scala and SBT
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: 'adopt@1.11'  # or match your actual Java version
 
       - name: Cache SBT and dependencies
         uses: actions/cache@v3
@@ -27,14 +32,14 @@ jobs:
             ~/.ivy2/cache
             ~/.sbt
             ~/.coursier
-          key: sbt-${{ runner.os }}-${{ hashFiles('**/build.sbt') }}
+          key: sbt-${{ runner.os }}-${{ hashFiles('**/*.sbt') }}
           restore-keys: |
             sbt-${{ runner.os }}-
 
       - name: Run tests
         run: sbt test
 
-      # - name: Publish artifacts (commented out until ready)
+      # - name: Publish artifacts (commented out)
       #   env:
       #     SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
       #     SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
